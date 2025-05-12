@@ -22,7 +22,7 @@ This is a clean, responsive personal website for showcasing my work as a Data & 
 
 ```bash
 # Clone the repository
-git clone [https://github.com/InesBi/Ines_Birimahire_Website.git]
+git clone https://github.com/InesBi/Ines_Birimahire_Website.git
 
 
 # Open index.html in your browser
