@@ -1,19 +1,19 @@
 # Ines Birimahire – Website 
 
-This is a clean, responsive personal website for showcasing my work as a Data & AI Engineer. It highlights my technical competencies, certifications, professional experience, and education, and includes a contact form and downloadable CVs in English and French.
+This is a clean, responsive personal website for showcasing my work as a IT professional. It highlights my technical competencies, certifications, professional experience, and education, and includes a contact form and downloadable CVs in English and French.
 
 ## Features
 
-- 💼 Work experience and education
-- 📜 Technical & functional skills
-- 🏅 Certifications with image support
+- 💼 About me
+- 📜 skills & Technologies 
+- 🏅 Certifications 
 - 📄 Resume download (FR & EN)
 - 📬 Contact form using Formspree
-- 🌐 Ready for deployment on GitHub Pages, Netlify, or AWS S3
+- 🌐 Ready for deployment on AWS S3
 
 ## Live Demo
 
-👉 [Visit My Portfolio](https://inesbirimahire.com)
+👉 [Visit My Portfolio](https://inesbirimahire.org)
 
 ## Setup
 
