@@ -13,7 +13,7 @@ This is a clean, responsive personal website for showcasing my work as a IT prof
 
 ## Live Demo
 
-👉 [Visit My Portfolio](https://inesbirimahire.org)
+👉 [Visit My Website](https://inesbirimahire.org)
 
 ## Setup
 
