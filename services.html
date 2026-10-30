@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services — Ines Birimahire</title>
+  <meta name="description" content="AI, RPA, Data Engineering, Dynamics 365, Cloud & DevOps consulting by Ines Birimahire." />
+  <style>
+    :root{
+      --bg:#0f172a; --panel:#111827; --muted:#94a3b8; --text:#e5e7eb;
+      --brand:#f59e0b; --brand-2:#60a5fa; --ok:#22c55e; --warn:#f97316;
+      --shadow:0 10px 25px rgba(0,0,0,.35); --radius:16px;
+      --medium:#00ab6c; --linkedin:#0077b5; --github:#181717; --email:#facc15;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 800px at 10% -10%, rgba(96,165,250,.12), transparent 60%),
+        radial-gradient(1200px 800px at 110% 10%, rgba(245,158,11,.12), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased; line-height:1.6; padding:0 0 64px;
+    }
+    .wrap{max-width:1200px; margin:0 auto; padding:28px 20px}
+    .hero{display:grid; gap:16px; align-items:center; grid-template-columns:1fr; text-align:center; padding:36px 0 12px}
+    .hero h1{font-size:clamp(28px,4vw,44px); line-height:1.1; margin:0}
+    .hero p{color:var(--muted); margin:6px 0 0; font-size:clamp(14px,1.7vw,18px)}
+    .cta{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; text-decoration:none; color:#0b1220; background:linear-gradient(135deg,var(--brand),#fde68a); font-weight:700; box-shadow:var(--shadow); margin-top:16px}
+    .cta span.icon{display:inline-grid; place-items:center; width:20px; height:20px; background:#0b1220; color:#fde68a; border-radius:999px; font-size:14px}
+    .cta.secondary{background:linear-gradient(135deg, var(--brand-2), #bfdbfe)}
+
+    .grid{display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); margin-top:28px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; position:relative; overflow:hidden}
+    .card:hover{transform:translateY(-3px); transition:transform .25s ease}
+    .chip{display:inline-flex; align-items:center; gap:8px; font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(96,165,250,.12); color:#c7d2fe; border:1px solid rgba(96,165,250,.25)}
+    .card h3{margin:10px 0 6px; font-size:20px}
+    .card p{color:var(--muted); margin:6px 0 12px}
+    .card ul{padding-left:18px; margin:6px 0 0}
+    .card li{margin:6px 0}
+    .icon{width:28px; height:28px; display:inline-block; vertical-align:middle}
+    .sep{height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent); margin:28px 0; border:0}
+
+    .packages{display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .pkg{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03)); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+    .pkg h4{margin:4px 0 8px; font-size:18px}
+    .price{font-size:14px; color:#e9d5ff; opacity:.85}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(245,158,11,.12); color:#fde68a; border:1px solid rgba(245,158,11,.25)}
+
+    .process{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+    .step{background:rgba(255,255,255,.04); border:1px dashed rgba(255,255,255,.18); border-radius:14px; padding:14px}
+    .step strong{display:block; margin-bottom:6px}
+
+    .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:14px}
+
+    /* Footer with icon brand hovers */
+    .footer{text-align:center; margin-top:36px; color:var(--muted); font-size:14px}
+    .footer-links{margin-top:12px; display:flex; gap:18px; justify-content:center; flex-wrap:wrap}
+    .footer-links a{color:var(--text); text-decoration:none; padding:6px; border-radius:8px; transition:background .3s,color .3s; font-size:14px; display:flex; align-items:center; gap:6px}
+    .footer-links svg{width:18px; height:18px; fill:var(--text); transition:fill .3s}
+    .footer-links a.medium:hover svg{fill:var(--medium)}
+    .footer-links a.linkedin:hover svg{fill:var(--linkedin)}
+    .footer-links a.github:hover svg{fill:var(--github)}
+    .footer-links a.email:hover svg{fill:var(--email)}
+
+    /* Mobile ⇒ hide hero visual; show on desktop */
+    .hero-visual{display:none}
+    @media (min-width:900px){
+      .hero{grid-template-columns:1.1fr .9fr; text-align:left; gap:28px}
+      .hero-visual{display:block}
+    }
+
+    /* Dialog status */
+    .status{margin-top:10px; font-size:14px}
+    .status.ok{color:#86efac}
+    .status.err{color:#fca5a5}
+    
+    /* Confetti canvas overlay */
+    #confetti-canvas{position:fixed; inset:0; pointer-events:none; z-index:9999}
+  </style>
+</head>
+<body><!-- Navigation -->
+<nav style="background:#111827; box-shadow:0 2px 6px rgba(0,0,0,.4); position:sticky; top:0; z-index:50;">
+  <div style="max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding:14px 20px;">
+    <a href="index.html" style="font-weight:700; font-size:18px; color:#f9fafb; text-decoration:none;">Ines Birimahire</a>
+    <div style="display:flex; gap:20px;">
+      <a href="index.html#hero" style="color:#e5e7eb; text-decoration:none;">Home</a>
+      <a href="services.html" style="color:#f59e0b; font-weight:600; text-decoration:none;">Services</a>
+      <a href="index.html#portfolio" style="color:#e5e7eb; text-decoration:none;">Portfolio</a>
+      <a href="index.html#certifications" style="color:#e5e7eb; text-decoration:none;">Certifications</a>
+      <a href="index.html#contact" style="color:#e5e7eb; text-decoration:none;">Contact</a>
+    </div>
+  </div>
+</nav>
+
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <h1>Services that turn <span style="color:var(--brand)">data</span> into delivery.</h1>
+        <p>From AI & NLP to RPA, Dynamics 365, and scalable MLOps — I help organizations automate, analyze, and accelerate with production-grade solutions.</p>
+        <div class="cta-row">
+          <a class="cta" href="#contact"><span class="icon">✱</span><span>Book a Discovery Call</span></a>
+          <div class="relative inline-block">
+  <button class="cta secondary" onclick="document.getElementById('resume-menu').classList.toggle('open')">
+    <span class="icon">📄</span><span>View Résumé</span>
+  </button>
+  <div id="resume-menu" class="resume-menu hidden">
+    <a href="/resume-en.pdf" target="_blank" rel="noopener">English PDF</a>
+    <a href="/resume-fr.pdf" target="_blank" rel="noopener">Français PDF</a>
+  </div>
+</div>
+
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="card" style="height:100%">
+          <span class="chip">Trusted by public sector & enterprise</span>
+          <h3 style="margin-top:8px">Core Capabilities</h3>
+          <ul>
+            <li>AI & NLP model development (BERT, LLMs)</li>
+            <li>RPA with UiPath, Automation Anywhere, Power Automate</li>
+            <li>Dynamics 365 & Power Platform apps</li>
+            <li>Cloud & MLOps (Azure/AWS), CI/CD</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="sep" />
+
+    <section id="services">
+      <h2 style="margin:0 0 12px;font-size:24px">Service Lines</h2>
+      <div class="grid">
+        <article class="card">
+          <span class="chip">AI & Machine Learning</span>
+          <h3>Custom NLP & AI Solutions</h3>
+          <p>Design and deploy domain-tailored NLP and predictive models — from CV parsers and chatbots to clinical/legal text analytics.</p>
+          <ul>
+            <li>LLM integration (GPT-4 class, Gemini), prompt & retrieval design</li>
+            <li>BERT/PyTorch pipelines, evaluation & observability</li>
+            <li>APIs & microservices for inference at scale</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="chip">Automation</span>
+          <h3>RPA Development & Process Mining</h3>
+          <p>Automate high-volume processes (IAM, orders, compliance) with resilient bots and measurable ROI.</p>
+          <ul>
+            <li>UiPath, Automation Anywhere, Power Automate</li>
+            <li>Process discovery with mining & KPIs</li>
+            <li>Testing, monitoring, and change management</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="chip">Data & MLOps</span>
+          <h3>Data Engineering & Model Operations</h3>
+          <p>Build secure training/serving environments with reproducible pipelines, experiment tracking, and governance.</p>
+          <ul>
+            <li>ETL/ELT, feature stores, AutoML</li>
+            <li>MLflow, DVC, experiment tracking</li>
+            <li>APIs, Streamlit dashboards, encryption at rest</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="chip">Enterprise Apps</span>
+          <h3>Dynamics 365 & Power Platform</h3>
+          <p>Design, customize, and integrate enterprise apps for case management, document automation, and analytics.</p>
+          <ul>
+            <li>Power Apps, Dataverse, Power Automate, Power BI</li>
+            <li>Xpertdoc / document workflows, e-sign & records</li>
+            <li>Azure AD B2C, REST/SOAP integrations</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="chip">Cloud & DevOps</span>
+          <h3>Cloud Architecture & CI/CD</h3>
+          <p>Operationalize delivery with secure cloud patterns, automated testing, and release pipelines.</p>
+          <ul>
+            <li>Azure & AWS pipelines, IaC, containerization</li>
+            <li>Observability, cost control, and reliability</li>
+            <li>Security reviews & governance</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="chip">Enablement</span>
+          <h3>Training, Workshops & Advisory</h3>
+          <p>Upskill teams in AI, RPA, and data — pragmatic sessions focused on business outcomes.</p>
+          <ul>
+            <li>Hands-on Python, SQL, and automation labs</li>
+            <li>Discovery & roadmapping for exec stakeholders</li>
+            <li>Playbooks, SOPs, and Center of Excellence setup</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <hr class="sep" />
+
+    <section id="packages">
+      <h2 style="margin:0 0 12px;font-size:24px">Engagement Packages</h2>
+      <div class="packages">
+        <div class="pkg">
+          <h4>AI Feasibility Sprint — 2 weeks</h4>
+          <div class="price">Outcome: prototype + roadmap</div>
+          <ul>
+            <li>Use-case discovery and data audit</li>
+            <li>Baseline model/automation prototype</li>
+            <li>ROI & risk assessment</li>
+          </ul>
+          <div class="tags"><span class="tag">Fixed-scope</span><span class="tag">Exec-ready</span></div>
+        </div>
+        <div class="pkg">
+          <h4>Automation Launchpad — 4–6 weeks</h4>
+          <div class="price">Outcome: production bot + runbook</div>
+          <ul>
+            <li>Process mapping & guardrails</li>
+            <li>Bot build, test, hardening</li>
+            <li>Monitoring & handover</li>
+          </ul>
+          <div class="tags"><span class="tag">RPA</span><span class="tag">Compliance</span></div>
+        </div>
+        <div class="pkg">
+          <h4>MLOps Foundations — 6–8 weeks</h4>
+          <div class="price">Outcome: reproducible pipelines</div>
+          <ul>
+            <li>Experiment tracking & versioning</li>
+            <li>CI/CD for models & APIs</li>
+            <li>Security & governance patterns</li>
+          </ul>
+          <div class="tags"><span class="tag">Azure/AWS</span><span class="tag">MLflow/DVC</span></div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="sep" />
+
+
+
+    <hr class="sep" />
+
+    <section id="process">
+      <h2 style="margin:0 0 12px;font-size:24px">Delivery Process</h2>
+      <div class="process">
+        <div class="step"><strong>1. Discover</strong>Align on goals, constraints, and success metrics.</div>
+        <div class="step"><strong>2. Design</strong>Solution architecture, data plan, and acceptance criteria.</div>
+        <div class="step"><strong>3. Build</strong>Iterative delivery with demos, tests, and security reviews.</div>
+        <div class="step"><strong>4. Launch</strong>Production hardening, monitoring, and knowledge transfer.</div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:28px; text-align:center;">
+      <h2 style="margin:0 0 8px;font-size:24px">Let’s work together</h2>
+      <p style="color:var(--muted); margin:0 0 12px">Ready to scope a project or want a quick second opinion? I’m here for it.</p>
+      <div class="cta-row">
+        <a class="cta" href="mailto:ines.birimahi@gmail.com"><span class="icon">✉</span><span> </span></a>
+        <a class="cta secondary" href="#" onclick="document.getElementById('inquiry').showModal();return false;">Send an Inquiry</a>
+      </div>
+    </section>
+
+    <dialog id="inquiry" style="border:none; border-radius:16px; max-width:560px; width:90%; padding:0; box-shadow: var(--shadow);">
+      <form id="contact-form" action="https://formspree.io/f/xanodgqg" method="POST" style="background:#0b1220; color:var(--text); padding:18px 18px 10px;">
+        <h3 style="margin:0 0 10px">Project Inquiry</h3>
+        <p style="margin:0 0 12px; color:var(--muted)">Tell me a bit about your goals and timeline. I’ll reply within 1–2 business days.</p>
+        <div style="display:grid; gap:10px; grid-template-columns: 1fr 1fr;">
+          <label> Name<br><input required name="name" autocomplete="name" style="width:100%; padding:10px; border-radius:10px; border:1px solid #334155; background:#0f172a; color:var(--text)" /></label>
+          <label> Email<br><input required type="email" name="email" autocomplete="email" style="width:100%; padding:10px; border-radius:10px; border:1px solid #334155; background:#0f172a; color:var(--text)" /></label>
+        </div>
+        <label style="display:block; margin-top:10px"> What can I help you build?<br>
+          <textarea name="message" rows="5" style="width:100%; padding:10px; border-radius:10px; border:1px solid #334155; background:#0f172a; color:var(--text)"></textarea>
+        </label>
+        <input type="hidden" name="_subject" value="New inquiry from services page" />
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <div class="status" id="form-status" aria-live="polite"></div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:12px;">
+          <button type="button" onclick="document.getElementById('inquiry').close()" style="padding:10px 14px; border-radius:10px; border:1px solid #334155; background:#111827; color:var(--text)">Close</button>
+          <button class="cta" type="submit" style="border:none; cursor:pointer"><span class="icon">→</span><span>Send</span></button>
+        </div>
+      </form>
+    </dialog>
+
+    <footer class="footer">
+      © <span id="year"></span> Ines Birimahire · Canada · Available for select engagements
+      <div class="footer-links">
+        <a href="https://medium.com/@ines.birimahire" target="_blank" class="medium">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1043.63 592.71"><path d="M588.67 296.36c0 163.73-131.66 296.35-294.33 296.35S0 460.09 0 296.36 131.66 0 294.34 0s294.33 132.63 294.33 296.36M908.1 296.36c0 154.14-65.83 279.06-147 279.06s-147-124.92-147-279.06 65.83-279.05 147-279.05 147 124.91 147 279.05M1043.63 296.36c0 141.93-23.29 256.9-52.02 256.9-28.72 0-52.01-114.97-52.01-256.9s23.29-256.9 52.01-256.9c28.73 0 52.02 114.97 52.02 256.9"/></svg>
+          Read My Blog
+        </a>
+
+        <a href="https://www.linkedin.com/in/inesbirimahire" target="_blank" class="linkedin">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.77 0 5-2.24 5-5V5c0-2.76-2.23-5-5-5zM7 20H4V9h3v11zM5.5 7.5C4.1 7.5 3 6.4 3 5s1.1-2.5 2.5-2.5S8 3.6 8 5s-1.1 2.5-2.5 2.5zM21 20h-3v-5.6c0-1.34-.02-3.07-1.87-3.07-1.87 0-2.15 1.46-2.15 2.97V20h-3V9h2.88v1.5h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.6V20z"/></svg>
+          Connect on LinkedIn
+        </a>
+        <a href="https://github.com/inesBi" target="_blank" class="github">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.3 2 1.3 1.2 2 3.2 1.4 4 .9.1-.9.5-1.4.9-1.8-2.7-.3-5.6-1.3-5.6-6a4.6 4.6 0 0 1 1.2-3.2c-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.9 1.2 2 1.2 3.2 0 4.7-2.9 5.6-5.6 6 .5.5 1 1.3 1 2.6v3.8c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          Personal GitHub
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightweight confetti animation (no libraries)
+    function launchConfetti(durationMs = 60000){
+      const canvas = document.getElementById('confetti-canvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, start;
+      function resize(){ w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+      resize();
+      window.addEventListener('resize', resize);
+      const colors = ['#fde68a', '#f59e0b', '#60a5fa', '#a78bfa', '#34d399', '#fca5a5'];
+      const N = Math.min(180, Math.floor((w*h)/24000));
+      const parts = Array.from({length:N}, () => ({
+        x: Math.random()*w,
+        y: -20 - Math.random()*h/2,
+        r: 4 + Math.random()*6,
+        vx: -2 + Math.random()*4,
+        vy: 2 + Math.random()*3,
+        a: Math.random()*Math.PI,
+        s: 0.02 + Math.random()*0.06,
+        color: colors[Math.floor(Math.random()*colors.length)]
+      }));
+      function draw(ts){
+        if(!start) start = ts; const elapsed = ts - start;
+        ctx.clearRect(0,0,w,h);
+        for(const p of parts){
+          p.x += p.vx; p.y += p.vy; p.a += p.s;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.a);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.r, -p.r/2, p.r*2, p.r);
+          ctx.restore();
+          if(p.y > h+20) { p.y = -20; p.x = Math.random()*w; }
+        }
+        if(elapsed < durationMs){ requestAnimationFrame(draw); }
+        else { ctx.clearRect(0,0,w,h); }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    // Handle Formspree submission with fetch (AJAX)
+    (function(){
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+      if(!form) return;
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        status.textContent = 'Sending…';
+        status.className = 'status';
+        try{
+          const data = new FormData(form);
+          const res = await fetch(form.action, { method: form.method, body: data, headers: { 'Accept': 'application/json' } });
+          if(res.ok){
+            status.textContent = 'Thank you! Your message has been sent.';
+            status.className = 'status ok';
+            form.reset();
+            launchConfetti();
+          }else{
+            const j = await res.json().catch(()=>({}));
+            status.textContent = j.errors ? j.errors.map(e=>e.message).join(', ') : 'Something went wrong. Please try again.';
+            status.className = 'status err';
+          }
+        }catch(err){
+          status.textContent = 'Network error. Please try again.';
+          status.className = 'status err';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

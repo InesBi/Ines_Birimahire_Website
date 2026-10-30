@@ -1,187 +1,464 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ines Birimahire | AI & Automation Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ines Birimahire — Home</title>
+
+  <!-- Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root { --accent:#f59e0b; --card-bg:rgba(255,255,255,.05); --text:#e5e7eb; }    :root{
+      --bg:#0f172a; --panel:#111827; --muted:#94a3b8; --text:#e5e7eb;
+      --brand:#f59e0b; --brand-2:#60a5fa; --ok:#22c55e; --warn:#f97316;
+      --shadow:0 10px 25px rgba(0,0,0,.35); --radius:16px;
+      --medium:#00ab6c; --linkedin:#0077b5; --github:#181717; --email:#facc15;
     }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0e1116;
-      color: #e2e8f0;
-      line-height: 1.6;
-    }
-    header {
-      background-color: #1a202c;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #cbd5e0;
-    }
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 2rem;
-    }
-    section {
-      margin-bottom: 3rem;
-    }
-    h2 {
-      font-size: 1.5rem;
-      border-bottom: 2px solid #2d3748;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    ul li {
-      margin-bottom: 0.6rem;
-    }
-    a {
-      color: #63b3ed;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .blog-button, .contact-button, .linkedin-button, .github-button {
-      display: inline-block;
-      margin-top: 1rem;
-      margin-right: 0.5rem;
-      padding:  0.6rem 1.2rem;
-      background-color: #2b6cb0;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .blog-button:hover, .contact-button:hover, .linkedin-button:hover, .github-button:hover {
-      background-color: #2c5282;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #1a202c;
-      color: #a0aec0;
-      font-size: 0.9rem;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    input, textarea {
-      padding: 0.5rem;
-      border: 1px solid #2d3748;
-      border-radius: 4px;
-      background-color: #1a202c;
-      color: #e2e8f0;
-    }
-    input::placeholder, textarea::placeholder {
-      color: #a0aec0;
-    }
-    button {
-      background-color: #2b6cb0;
-      color: white;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #2c5282;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Ines Birimahire</h1>
-    <p>AI & Data | Power Platform & Dynamics 365 Specialist | Cloud & Automation Enthusiast | Bilingual (FR/EN) | 7+ Yrs in Public Sector & Enterprise Solutions</p>
-    <a href="https://medium.com/@ines.birimahire" class="blog-button" target="_blank">Read My Blog</a>
-    <a href="#contact" class="contact-button">Contact Me</a>
-    <a href="https://www.linkedin.com/in/inesbirimahire" class="linkedin-button" target="_blank">Connect on LinkedIn</a>
-    <a href="https://github.com/inesBi" class="github-button" target="_blank">Personal GitHub</a>
-  </header>
+    /* Footer with icon brand hovers */
+    .footer{text-align:center; margin-top:36px; color:var(--muted); font-size:14px}
+    .footer-links{margin-top:12px; display:flex; gap:18px; justify-content:center; flex-wrap:wrap}
+    .footer-links a{color:var(--text); text-decoration:none; padding:6px; border-radius:8px; transition:background .3s,color .3s; font-size:14px; display:flex; align-items:center; gap:6px}
+    .footer-links svg{width:18px; height:18px; fill:var(--text); transition:fill .3s}
+    .footer-links a.medium:hover svg{fill:var(--medium)}
+    .footer-links a.linkedin:hover svg{fill:var(--linkedin)}
+    .footer-links a.github:hover svg{fill:var(--github)}
+    .footer-links a.email:hover svg{fill:var(--email)}
 
-  <main>
-    <section>
-      <h2>About Me</h2>
-      <p>I specialize in building intelligent systems that bridge business needs with modern technologies. From AI model integration to CRM automation and low-code development, I focus on delivering scalable solutions with impact.</p>
-    </section>
+    /* Mobile ⇒ hide hero visual; show on desktop */
+    .hero-visual{display:none}
+    @media (min-width:900px){
+      .hero{grid-template-columns:1.1fr .9fr; text-align:left; gap:28px}
+      .hero-visual{display:block}
+    }
 
-    <section>
-      <h2>Skills & Technologies</h2>
-      <ul>
-        <li>Power Platform (Canvas Apps, Model-Driven Apps, Power Automate, Power BI, Power Virtual Agents)</li>
-        <li>Microsoft Dynamics 365 CRM (Customization, Integration, Ribbon Workbench)</li>
-        <li>Azure Functions, Logic Apps, Azure DevOps (CI/CD)</li>
-        <li>AI & LLM Integration (OpenAI GPT, Gemini)</li>
-        <li>Python, JavaScript, REST APIs</li>
-        <li>AWS – Data & Analytics (S3, Glue, Athena, Redshift, Kinesis), Serverless & DevOps (Lambda, Step Functions, IAM, CloudWatch)</li>
-      </ul>
-    </section>
+    /* Dialog status */
+    .status{margin-top:10px; font-size:14px}
+    .status.ok{color:#86efac}
+    .status.err{color:#fca5a5}
+    
+    /* Confetti canvas overlay */
+    #confetti-canvas{position:fixed; inset:0; pointer-events:none; z-index:9999}
+    /* Certifications timeline */
+    .timeline{position:relative; max-width:900px; margin:auto}
+    .timeline::after{content:''; position:absolute; width:4px; background:var(--accent); top:0; bottom:0; left:50%; margin-left:-2px}
+    .timeline-item{padding:1em 2em; position:relative; width:50%}
+    .timeline-item::before{content:''; position:absolute; width:20px; height:20px; background:var(--accent); border:3px solid white; top:20px; border-radius:50%; z-index:1}
+    .timeline-item.left{left:0}
+    .timeline-item.right{left:50%}
+    .timeline-item.left::before{right:-10px}
+    .timeline-item.right::before{left:-10px}
+    .timeline-content{background:#1f2937; padding:1em; border-radius:8px; box-shadow:0 4px 15px rgba(0,0,0,0.2); color:var(--text)}
+    .timeline-content h3{margin:0 0 .3em; font-size:1.1em; color:var(--accent)}
+    .timeline-content p{margin:0; font-size:.95em}
+    @media (max-width:768px){.timeline::after{left:20px}.timeline-item{width:100%; padding-left:3em; padding-right:1em}.timeline-item.right{left:0}.timeline-item::before{left:6px; right:auto}}
+  html { scroll-behavior: smooth; }
+</style>
+</head><script>
+  // Active nav highlight on scroll
+  (function(){
+    const links = {
+      hero: document.querySelector('a[href="#hero"]'),
+      portfolio: document.querySelector('a[href="#portfolio"]'),
+      certifications: document.querySelector('a[href="#certifications"]'),
+      contact: document.querySelector('a[href="#contact"]')
+    };
+    const sections = {
+      hero: document.getElementById('hero'),
+      portfolio: document.getElementById('portfolio'),
+      certifications: document.getElementById('certifications'),
+      contact: document.getElementById('contact')
+    };
+    const allLinks = Object.values(links).filter(Boolean);
+    function setActive(key){
+      allLinks.forEach(a => a && a.classList.remove('text-yellow-400','font-semibold'));
+      if (links[key]) links[key].classList.add('text-yellow-400','font-semibold');
+    }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          for (const [key, el] of Object.entries(sections)){
+            if (e.target === el){ setActive(key); break; }
+          }
+        }
+      });
+    }, { threshold: 0.5, rootMargin: '-20% 0px -30% 0px' });
+    Object.values(sections).forEach(el => el && io.observe(el));
+    // Default highlight on load
+    setActive('hero');
+  })();
+</script>
 
-    <section>
-      <h2>Certifications</h2>
-      <ul>
-        <li>PL-200 – Microsoft Power Platform (2025)</li>
-        <li>AWS Certified – Data Engineering (2025)</li>
-        <li>AWS Certified – Cloud Data Pipeline Builder (2025)</li>
-        <li>AZ-400 – Microsoft DevOps (2021)</li>
-        <li>UiPath Certified – RPA Associate (2021)</li>
-        <li>Rasa Certification Workshop – Udemy (2021)</li>
-        <li>Automation Anywhere Certified – Advanced RPA Professional (2020)</li>
-        <li>Foundations of Artificial Intelligence: Machine Learning – LinkedIn (2020)</li>
-        <li>AI Programming with Python – Udacity (2019)</li>
-        <li>Research on Data or Specimens Only – Massachusetts Institute of Technology (2019)</li>
-        <li>Math for Machine Learning: PCA – Imperial College London (2018)</li>
-      </ul>
-    </section>
+<body class="bg-gray-900 text-white font-sans">
 
-    <section>
-      <h2>Contact & Resume</h2>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/inesbirimahire" target="_blank">inesbirimahire</a></p>
-      <p>
-        Download my resume: 
-        <a href="resume_ines_birimahire_en.pdf" download>English</a> | 
-        <a href="resume_ines_birimahire_fr.pdf" download>Français</a>
+  <!-- Navigation -->
+  <nav class="bg-gray-800 shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/" class="text-xl font-bold text-white">Ines Birimahire</a>
+      <div class="space-x-6 hidden md:flex">
+        <a href="#hero" class="hover:text-yellow-400">Home</a>
+       <a href="services.html" class="hover:text-yellow-400">Services</a>
+        <a href="#portfolio" class="hover:text-yellow-400">Portfolio</a>
+        <a href="#certifications" class="hover:text-yellow-400">Certifications</a>
+        <a href="#contact" class="hover:text-yellow-400">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+<!-- Hero -->
+<header id="hero" class="relative overflow-hidden">
+  <!-- background accents -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div class="w-[700px] h-[700px] bg-gradient-to-tr from-yellow-400/10 to-blue-400/10 rounded-full blur-3xl absolute -top-40 -left-40"></div>
+    <div class="w-[700px] h-[700px] bg-gradient-to-tr from-blue-400/10 to-purple-400/10 rounded-full blur-3xl absolute -bottom-40 -right-40"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+    <!-- Copy -->
+    <div>
+      <p class="tracking-widest text-xs md:text-sm text-gray-300 uppercase">AI • Automation • Data</p>
+      <h1 class="mt-3 text-4xl md:text-6xl font-extrabold leading-[1.05]">
+        I build <span class="bg-gradient-to-r from-yellow-400 via-amber-300 to-blue-300 bg-clip-text text-transparent">intelligent systems</span> that
+        actually ship.
+      </h1>
+      <p class="mt-4 text-base md:text-lg text-gray-300 max-w-xl">
+        From GPT/LLMs and RPA to Dynamics 365 and MLOps, I turn complex problems into production‑grade outcomes for public sector and enterprise teams.
       </p>
-    </section>
 
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <form action="https://formspree.io/f/xanodgqg" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
-  </main>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="services.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-full font-semibold text-gray-900 bg-gradient-to-r from-yellow-400 to-amber-200 shadow">
+          Explore Services
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="#portfolio" class="inline-flex items-center gap-2 px-5 py-3 rounded-full font-semibold text-gray-900 bg-gradient-to-r from-blue-400 to-blue-200">
+          See Work
+        </a>
+        <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-full font-semibold text-white/90 border border-white/20">
+          Start a Project
+        </a>
+      </div>
 
-  <footer>
-    &copy; 2025 Ines Birimahire. Built with purpose and precision.
-  </footer>
+      <!-- quick badges -->
+      <div class="mt-6 flex flex-wrap gap-2 text-xs text-gray-300">
+        <span class="px-3 py-1 rounded-full border border-white/15">PL‑200</span>
+        <span class="px-3 py-1 rounded-full border border-white/15">AZ‑400</span>
+        <span class="px-3 py-1 rounded-full border border-white/15">UiPath • AA • Power Automate</span>
+        <span class="px-3 py-1 rounded-full border border-white/15">Azure • AWS • CI/CD</span>
+      </div>
+    </div>
+
+    <!-- Visual / Stats card -->
+    <div class="order-first md:order-last">
+      <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 md:p-6 shadow-lg">
+        <div class="grid grid-cols-3 gap-4 text-center">
+          <div>
+            <div class="text-3xl font-extrabold text-white">30+</div>
+            <div class="text-xs text-gray-400 mt-1">Automations</div>
+          </div>
+          <div>
+            <div class="text-3xl font-extrabold text-white">15</div>
+            <div class="text-xs text-gray-400 mt-1">AI/NLP Models</div>
+          </div>
+          <div>
+            <div class="text-3xl font-extrabold text-white">8</div>
+            <div class="text-xs text-gray-400 mt-1">Cloud Pipelines</div>
+          </div>
+        </div>
+        <hr class="my-5 border-white/10">
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li class="flex items-start gap-2">
+            <span class="text-yellow-300 mt-0.5">✦</span>
+            GPT/LLM integrations with retrieval & guardrails
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-yellow-300 mt-0.5">✦</span>
+            UiPath / Power Automate bots with runbooks & KPIs
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-yellow-300 mt-0.5">✦</span>
+            Dynamics 365 + Power Platform for case management
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-yellow-300 mt-0.5">✦</span>
+            MLOps pipelines (MLflow, CI/CD, monitoring)
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- Tech Stack -->
+<section class="py-12 px-6 max-w-6xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-10">Tech Stack &amp; Expertise</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    
+    <!-- Languages & Frameworks -->
+    <div class="bg-gray-800 p-6 rounded-2xl shadow-md">
+      <h3 class="text-xl font-semibold text-purple-400 mb-4">Languages & Frameworks</h3>
+      <ul class="list-disc ml-5 space-y-1">
+        <li>Python · JavaScript · .NET (C#) · SQL</li>
+      </ul>
+    </div>
+
+    <!-- AI & Machine Learning -->
+    <div class="bg-gray-800 p-6 rounded-2xl shadow-md">
+      <h3 class="text-xl font-semibold text-green-400 mb-4">AI & Machine Learning</h3>
+      <ul class="list-disc ml-5 space-y-1">
+        <li>PyTorch · TensorFlow · scikit-learn</li>
+        <li>BERT · Hugging Face Transformers</li>
+        <li>GPT / LLM APIs · LangChain</li>
+      </ul>
+    </div>
+
+    <!-- MLOps & AI Tools -->
+    <div class="bg-gray-800 p-6 rounded-2xl shadow-md">
+      <h3 class="text-xl font-semibold text-yellow-300 mb-4">MLOps & AI Tools</h3>
+      <ul class="list-disc ml-5 space-y-1">
+        <li>MLflow · DVC · Streamlit</li>
+        <li>Docker · Kubernetes</li>
+      </ul>
+    </div>
+
+    <!-- Automation & RPA -->
+    <div class="bg-gray-800 p-6 rounded-2xl shadow-md">
+      <h3 class="text-xl font-semibold text-blue-400 mb-4">Automation & RPA</h3>
+      <ul class="list-disc ml-5 space-y-1">
+        <li>UiPath · Automation Anywhere</li>
+        <li>Power Automate · Blue Prism</li>
+      </ul>
+    </div>
+
+    <!-- Business Applications -->
+    <div class="bg-gray-800 p-6 rounded-2xl shadow-md">
+      <h3 class="text-xl font-semibold text-pink-400 mb-4">Business Applications</h3>
+      <ul class="list-disc ml-5 space-y-1">
+        <li>Dynamics 365 · Power Apps · Dataverse</li>
+        <li>SharePoint · Microsoft Teams</li>
+      </ul>
+    </div>
+
+    <!-- Analytics & Visualization -->
+    <div class="bg-gray-800 p-6 rounded-2xl shadow-md">
+      <h3 class="text-xl font-semibold text-indigo-400 mb-4">Analytics & Visualization</h3>
+      <ul class="list-disc ml-5 space-y-1">
+        <li>Power BI · Tableau</li>
+      </ul>
+    </div>
+
+    <!-- Cloud & DevOps -->
+    <div class="bg-gray-800 p-6 rounded-2xl shadow-md">
+      <h3 class="text-xl font-semibold text-red-400 mb-4">Cloud & DevOps</h3>
+      <ul class="list-disc ml-5 space-y-1">
+        <li>Azure · AWS</li>
+        <li>Redshift · Snowflake</li>
+        <li>GitHub Actions · CI/CD</li>
+      </ul>
+    </div>
+
+    <!-- Databases & Data Engineering -->
+    <div class="bg-gray-800 p-6 rounded-2xl shadow-md">
+      <h3 class="text-xl font-semibold text-teal-400 mb-4">Databases & Data Engineering</h3>
+      <ul class="list-disc ml-5 space-y-1">
+        <li>Oracle · MongoDB · ElasticSearch · SQL</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Certifications -->
+  <section id="certifications" class="py-12 bg-gray-800">
+    <h2 class="text-3xl font-bold text-center mb-10">Certifications</h2>
+    <div class="timeline">
+      <div class="timeline-item left"><div class="timeline-content"><h3>PL-200</h3><p>Microsoft Power Platform (2025)</p></div></div>
+      <div class="timeline-item right"><div class="timeline-content"><h3>AWS Certified</h3><p>Data Engineering (2025)</p></div></div>
+      <div class="timeline-item left"><div class="timeline-content"><h3>AWS Certified</h3><p>Cloud Data Pipeline Builder (2025)</p></div></div>
+      <div class="timeline-item right"><div class="timeline-content"><h3>AZ-400</h3><p>Microsoft DevOps (2021)</p></div></div>
+      <div class="timeline-item left"><div class="timeline-content"><h3>UiPath Certified</h3><p>RPA Associate (2021)</p></div></div>
+      <div class="timeline-item right"><div class="timeline-content"><h3>Rasa Certification Workshop</h3><p>Udemy (2021)</p></div></div>
+      <div class="timeline-item left"><div class="timeline-content"><h3>Automation Anywhere Certified</h3><p>Advanced RPA Professional (2020)</p></div></div>
+      <div class="timeline-item right"><div class="timeline-content"><h3>Foundations of AI: Machine Learning</h3><p>LinkedIn (2020)</p></div></div>
+      <div class="timeline-item left"><div class="timeline-content"><h3>AI Programming with Python</h3><p>Udacity (2019)</p></div></div>
+      <div class="timeline-item right"><div class="timeline-content"><h3>Research on Data or Specimens Only</h3><p>MIT (2019)</p></div></div>
+      <div class="timeline-item left"><div class="timeline-content"><h3>Math for Machine Learning: PCA</h3><p>Imperial College London (2018)</p></div></div>
+    </div>
+  </section>
+
+  <!-- Portfolio (cleaned: removed mixed .project blocks; single, consistent card style) -->
+  <section id="portfolio" class="py-12 px-6 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-10">Project Portfolio</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white bg-opacity-5 rounded-2xl shadow-md overflow-hidden">
+        <img loading="lazy" src="images/experience-matching.png" alt="AI-Powered Experience Matching Tool" class="w-full h-64 object-cover">
+        <div class="p-4"><div class="font-semibold">AI-Powered Experience Matching Tool</div><p class="text-gray-300 text-sm mt-1">AI tool to auto-generate experience matrices from CVs using GPT &amp; Gemini.</p></div>
+      </div>
+      <div class="bg-white bg-opacity-5 rounded-2xl shadow-md overflow-hidden">
+        <img loading="lazy" src="images/sicour.png" alt="SICOUR - Criminal Case Management System" class="w-full h-64 object-cover">
+        <div class="p-4"><div class="font-semibold">SICOUR - Criminal Case Management System</div><p class="text-gray-300 text-sm mt-1">Dynamics 365-based system for tracking criminal cases at the DPPC.</p></div>
+      </div>
+      <div class="bg-white bg-opacity-5 rounded-2xl shadow-md overflow-hidden">
+        <img loading="lazy" src="images/ai-environment.jpg" alt="AI Environment Enablement" class="w-full h-64 object-cover">
+        <div class="p-4"><div class="font-semibold">AI Environment Enablement</div><p class="text-gray-300 text-sm mt-1">Built an MLOps environment for AI model training and deployment.</p></div>
+      </div>
+      <div class="bg-white bg-opacity-5 rounded-2xl shadow-md overflow-hidden">
+        <img loading="lazy" src="images/rpa-iam.png" alt="RPA for Identity &amp; Access Management" class="w-full h-64 object-cover">
+        <div class="p-4"><div class="font-semibold">RPA for Identity &amp; Access Management</div><p class="text-gray-300 text-sm mt-1">Automated access management processes using UiPath and JSON workflows.</p></div>
+      </div>
+      <div class="bg-white bg-opacity-5 rounded-2xl shadow-md overflow-hidden">
+        <img loading="lazy" src="images/order-automation.png" alt="Order Management Automation" class="w-full h-64 object-cover">
+        <div class="p-4"><div class="font-semibold">Order Management Automation</div><p class="text-gray-300 text-sm mt-1">End-to-end automation of order handling using UiPath and DevOps practices.</p></div>
+      </div>
+      <div class="bg-white bg-opacity-5 rounded-2xl shadow-md overflow-hidden">
+        <img loading="lazy" src="images/employee-access.png" alt="Employee Access Automation" class="w-full h-64 object-cover">
+        <div class="p-4"><div class="font-semibold">Employee Access Automation</div><p class="text-gray-300 text-sm mt-1">Secure, automated workflows to manage employee access permissions.</p></div>
+      </div>
+      <div class="bg-white bg-opacity-5 rounded-2xl shadow-md overflow-hidden">
+        <img loading="lazy" src="images/nlp-clinical.png" alt="NLP for Clinical Tasks" class="w-full h-64 object-cover">
+        <div class="p-4"><div class="font-semibold">NLP for Clinical Tasks</div><p class="text-gray-300 text-sm mt-1">BERT-based NLP models for healthcare-related tasks.</p></div>
+      </div>
+      <div class="bg-white bg-opacity-5 rounded-2xl shadow-md overflow-hidden">
+        <img loading="lazy" src="images/business-process.png" alt="Business Process Automation" class="w-full h-64 object-cover">
+        <div class="p-4"><div class="font-semibold">Business Process Automation</div><p class="text-gray-300 text-sm mt-1">.NET and BI dashboards to streamline company processes.</p></div>
+      </div>
+      <div class="bg-white bg-opacity-5 rounded-2xl shadow-md overflow-hidden">
+        <img loading="lazy" src="images/decentralized-systems.png" alt="Decentralized Systems for East Africa" class="w-full h-64 object-cover">
+        <div class="p-4"><div class="font-semibold">Decentralized Systems for East Africa</div><p class="text-gray-300 text-sm mt-1">System modeling &amp; data pipelines across multiple countries.</p></div>
+      </div>
+    </div>
+  </section>
+
+<section id="contact" style="margin-top:60px; text-align:center;">
+  <h2 style="margin:0 0 8px;font-size:24px">Let’s work together</h2>
+  <p style="color:#94a3b8; margin:0 0 12px">
+    Ready to scope a project or want a quick second opinion? I’m here for it.
+  </p>
+  <div class="cta-row" style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:14px;">
+    <a class="cta" href="mailto:ines.birimahi@gmail.com" style="display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; text-decoration:none; color:#0b1220; background:linear-gradient(135deg,#f59e0b,#fde68a); font-weight:700; box-shadow:0 10px 25px rgba(0,0,0,.35);">
+      <span class="icon" style="display:inline-grid; place-items:center; width:20px; height:20px; background:#0b1220; color:#fde68a; border-radius:999px; font-size:14px;">✉</span>
+      <span>  </span>
+    </a>
+    <a class="cta secondary" href="#" onclick="document.getElementById('inquiry').showModal();return false;" style="display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; text-decoration:none; color:#0b1220; background:linear-gradient(135deg,#60a5fa,#bfdbfe); font-weight:700; box-shadow:0 10px 25px rgba(0,0,0,.35);">
+      <span class="icon" style="display:inline-grid; place-items:center; width:20px; height:20px; background:#0b1220; color:#bfdbfe; border-radius:999px; font-size:14px;">✱</span>
+      <span>Send an Inquiry</span>
+    </a>
+  </div>
+</section>
+
+<!-- Reuse the same dialog from services.html -->
+<dialog id="inquiry" style="border:none; border-radius:16px; max-width:560px; width:90%; padding:0; box-shadow:0 10px 25px rgba(0,0,0,.35);">
+  <form id="contact-form" action="https://formspree.io/f/xanodgqg" method="POST" style="background:#0b1220; color:#e5e7eb; padding:18px 18px 10px;">
+    <h3 style="margin:0 0 10px">Project Inquiry</h3>
+    <p style="margin:0 0 12px; color:#94a3b8">Tell me a bit about your goals and timeline. I’ll reply within 1–2 business days.</p>
+    <div style="display:grid; gap:10px; grid-template-columns: 1fr 1fr;">
+      <label> Name<br><input required name="name" autocomplete="name" style="width:100%; padding:10px; border-radius:10px; border:1px solid #334155; background:#0f172a; color:#e5e7eb" /></label>
+      <label> Email<br><input required type="email" name="email" autocomplete="email" style="width:100%; padding:10px; border-radius:10px; border:1px solid #334155; background:#0f172a; color:#e5e7eb" /></label>
+    </div>
+    <label style="display:block; margin-top:10px"> What can I help you build?<br>
+      <textarea name="message" rows="5" style="width:100%; padding:10px; border-radius:10px; border:1px solid #334155; background:#0f172a; color:#e5e7eb"></textarea>
+    </label>
+    <input type="hidden" name="_subject" value="New inquiry from home page" />
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+    <div class="status" id="form-status" aria-live="polite" style="margin-top:10px; font-size:14px"></div>
+    <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:12px;">
+      <button type="button" onclick="document.getElementById('inquiry').close()" style="padding:10px 14px; border-radius:10px; border:1px solid #334155; background:#111827; color:#e5e7eb">Close</button>
+      <button class="cta" type="submit" style="border:none; cursor:pointer; display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; text-decoration:none; color:#0b1220; background:linear-gradient(135deg,#f59e0b,#fde68a); font-weight:700; box-shadow:0 10px 25px rgba(0,0,0,.35);">
+        <span class="icon" style="display:inline-grid; place-items:center; width:20px; height:20px; background:#0b1220; color:#fde68a; border-radius:999px; font-size:14px;">→</span>
+        <span>Send</span>
+      </button>
+    </div>
+  </form>
+</dialog>
+<footer class="footer" style="text-align:center; margin-top:36px; color:#94a3b8; font-size:14px">
+  © <span id="year"></span> Ines Birimahire · Canada · Available for select engagements
+  <div class="footer-links" style="margin-top:12px; display:flex; gap:18px; justify-content:center; flex-wrap:wrap">
+    <a href="https://medium.com/@ines.birimahire" target="_blank" class="medium" style="color:#e5e7eb; text-decoration:none; padding:6px; border-radius:8px; display:flex; align-items:center; gap:6px">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1043.63 592.71" style="width:18px; height:18px; fill:#e5e7eb"><path d="M588.67 296.36c0 163.73-131.66 296.35-294.33 296.35S0 460.09 0 296.36 131.66 0 294.34 0s294.33 132.63 294.33 296.36M908.1 296.36c0 154.14-65.83 279.06-147 279.06s-147-124.92-147-279.06 65.83-279.05 147-279.05 147 124.91 147 279.05M1043.63 296.36c0 141.93-23.29 256.9-52.02 256.9-28.72 0-52.01-114.97-52.01-256.9s23.29-256.9 52.01-256.9c28.73 0 52.02 114.97 52.02 256.9"/></svg>
+      Read My Blog
+    </a>
+
+    <a href="https://www.linkedin.com/in/inesbirimahire" target="_blank" class="linkedin" style="color:#e5e7eb; text-decoration:none; padding:6px; border-radius:8px; display:flex; align-items:center; gap:6px">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:18px; height:18px; fill:#e5e7eb"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.77 0 5-2.24 5-5V5c0-2.76-2.23-5-5-5zM7 20H4V9h3v11zM5.5 7.5C4.1 7.5 3 6.4 3 5s1.1-2.5 2.5-2.5S8 3.6 8 5s-1.1 2.5-2.5 2.5zM21 20h-3v-5.6c0-1.34-.02-3.07-1.87-3.07-1.87 0-2.15 1.46-2.15 2.97V20h-3V9h2.88v1.5h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.6V20z"/></svg>
+      Connect on LinkedIn
+    </a>
+    <a href="https://github.com/inesBi" target="_blank" class="github" style="color:#e5e7eb; text-decoration:none; padding:6px; border-radius:8px; display:flex; align-items:center; gap:6px">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:18px; height:18px; fill:#e5e7eb"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.3 2 1.3 1.2 2 3.2 1.4 4 .9.1-.9.5-1.4.9-1.8-2.7-.3-5.6-1.3-5.6-6a4.6 4.6 0 0 1 1.2-3.2c-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.8.9 1.2 2 1.2 3.2 0 4.7-2.9 5.6-5.6 6 .5.5 1 1.3 1 2.6v3.8c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+      Personal GitHub
+    </a>
+  </div>
+</footer>
+
+
+  <canvas id="confetti-canvas"></canvas>
 
   <script>
-    const form = document.querySelector("form");
-    form.addEventListener("submit", function (e) {
-      setTimeout(() => form.reset(), 100); // wait for Formspree to send then clear
+  // Year for footer
+  document.getElementById('year')?.textContent = new Date().getFullYear();
+
+  // Lightweight confetti animation (no libraries)
+  function launchConfetti(durationMs =   3500){
+    const canvas = document.getElementById('confetti-canvas');
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let w, h, start;
+    function resize(){ w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    const colors = ['#fde68a','#f59e0b','#60a5fa','#a78bfa','#34d399','#fca5a5'];
+    const N = Math.min(180, Math.floor((w*h)/24000));
+    const parts = Array.from({length:N}, () => ({
+      x: Math.random()*w, y: -20 - Math.random()*h/2, r: 4 + Math.random()*6,
+      vx: -2 + Math.random()*4, vy: 2 + Math.random()*3,
+      a: Math.random()*Math.PI, s: 0.02 + Math.random()*0.06,
+      color: colors[Math.floor(Math.random()*colors.length)]
+    }));
+    function draw(ts){
+      if(!start) start = ts; const elapsed = ts - start;
+      ctx.clearRect(0,0,w,h);
+      for(const p of parts){
+        p.x += p.vx; p.y += p.vy; p.a += p.s;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.a);
+        ctx.fillStyle = p.color; ctx.fillRect(-p.r, -p.r/2, p.r*2, p.r);
+        ctx.restore();
+        if(p.y > h+20){ p.y = -20; p.x = Math.random()*w; }
+      }
+      if(elapsed < durationMs) requestAnimationFrame(draw); else ctx.clearRect(0,0,w,h);
+    }
+    requestAnimationFrame(draw);
+  }
+
+  // Formspree AJAX submit (targets the home dialog form we added)
+  (function(){
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    if(!form || !status) return;
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      status.textContent = 'Sending…';
+      status.className = 'status';
+      try{
+        const data = new FormData(form);
+        const res = await fetch(form.action, { method: form.method, body: data, headers: { 'Accept': 'application/json' } });
+        if(res.ok){
+          status.textContent = 'Thank you! Your message has been sent.';
+          status.className = 'status ok';
+          form.reset();
+          launchConfetti();
+        }else{
+          const j = await res.json().catch(()=>({}));
+          status.textContent = j.errors ? j.errors.map(e=>e.message).join(', ') : 'Something went wrong. Please try again.';
+          status.className = 'status err';
+        }
+      }catch{
+        status.textContent = 'Network error. Please try again.';
+        status.className = 'status err';
+      }
     });
-  </script>
+  })();
+</script>
+
 </body>
 </html>
